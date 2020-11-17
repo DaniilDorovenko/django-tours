@@ -131,14 +131,16 @@ class TourView(View):
         """
         return departure_code_list[departure_code]
 
-#  Не работает!
-#  from django.http import HttpResponse
-# def page_not_found(request, exception):
-#     return HttpResponse('Такой страницы нет!', status=404)
-
 
 def page_not_found(request, exception):
     context = {}
     response = render(request, "pages/errors/_404.html", context=context)
+    response.status_code = exception
+    return response
+
+
+def server_error(exception):
+    context = {}
+    response = render("pages/errors/_500.html", context=context)
     response.status_code = exception
     return response
