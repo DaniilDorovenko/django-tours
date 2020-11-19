@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 handler404 = 'tours.views.page_not_found'
-handler500 = 'tours.views.server_error'
+# handler500 = 'tours.views.server_error'
 
 urlpatterns = [
     path('admin/', admin.site.urls),

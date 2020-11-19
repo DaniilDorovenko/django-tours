@@ -2,6 +2,8 @@ from random import sample
 
 from django.shortcuts import render
 from django.views.generic import View
+from django.http import HttpResponse
+
 
 from data import tours, departures, title, subtitle, description
 
@@ -133,14 +135,8 @@ class TourView(View):
 
 
 def page_not_found(request, exception):
-    context = {}
-    response = render(request, "pages/errors/_404.html", context=context)
-    response.status_code = exception
-    return response
+    return HttpResponse('Нету такой страницы!')
 
 
 def server_error(exception):
-    context = {}
-    response = render("pages/errors/_500.html", context=context)
-    response.status_code = exception
-    return response
+    return HttpResponse('Что-то сломалось, но мы обязательно починим!')
