@@ -5,7 +5,7 @@ from django.views.generic import View
 from django.http import HttpResponse
 
 
-from data import tours, departures, title, subtitle, description
+from data import tours, departures
 
 
 def import_tour_id(tours):
@@ -20,11 +20,7 @@ class MainView(View):
 
     def get(self, request, ):
         random_tours = self.get_random_tours(6, tours)
-        return render(request, 'index.html',
-                      {'title': title,
-                       'subtitle': subtitle,
-                       'description': description,
-                       'random_tours': random_tours})
+        return render(request, 'index.html', {'random_tours': random_tours})
 
     @staticmethod
     def get_random_tours(tours_number: int, tours_data: dict) -> list:
