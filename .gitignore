@@ -4,4 +4,4 @@
 /stepik_dj_demo-master/
 *.pyc
 .idea
-.sqlite3
+db.sqlite3
